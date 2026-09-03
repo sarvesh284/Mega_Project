@@ -6,22 +6,20 @@ const jobSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "EmployerProfile",
       required: true,
+      index: true,
     },
 
     title: {
       mr: {
         type: String,
-        required: true,
         trim: true,
       },
       hi: {
         type: String,
-        required: true,
         trim: true,
       },
       en: {
         type: String,
-        required: true,
         trim: true,
       },
     },
@@ -60,7 +58,7 @@ const jobSchema = new mongoose.Schema(
 
     requiredWorkers: {
       type: Number,
-      default: 1,
+      required: true,
       min: 1,
     },
 
@@ -68,6 +66,7 @@ const jobSchema = new mongoose.Schema(
       type: String,
       enum: ["open", "assigned", "completed", "cancelled"],
       default: "open",
+      index: true,
     },
 
     startDate: {
@@ -79,6 +78,7 @@ const jobSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "JobCategory",
       required: true,
+      index: true,
     },
 
     description: {
@@ -98,15 +98,16 @@ const jobSchema = new mongoose.Schema(
 
     experienceRequired: {
       type: Number,
-      default: 0,
       min: 0,
+      default: 0,
     },
 
-    preferredLanguages: {
-      type: [String],
-      enum: ["mr", "hi", "en"],
-      default: ["mr"],
-    },
+    preferredLanguages: [
+      {
+        type: String,
+        trim: true,
+      },
+    ],
 
     applicationDeadline: {
       type: Date,
@@ -120,25 +121,24 @@ const jobSchema = new mongoose.Schema(
     shiftType: {
       type: String,
       enum: ["day", "night", "flexible"],
-      default: "day",
+      default: "flexible",
     },
   },
+
   {
     timestamps: true,
   }
 );
 
-// Geo-spatial search
+// GeoJSON 2dsphere index
 jobSchema.index({
   location: "2dsphere",
 });
 
-// Faster retrieval of recent jobs by status
+// Compound index: status + createdAt
 jobSchema.index({
   status: 1,
   createdAt: -1,
 });
 
-const Job = mongoose.model("Job", jobSchema);
-
-export default Job;
+module.exports = mongoose.model("Job", jobSchema);
