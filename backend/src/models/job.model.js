@@ -13,14 +13,17 @@ const jobSchema = new mongoose.Schema(
       mr: {
         type: String,
         trim: true,
+        default: null,
       },
       hi: {
         type: String,
         trim: true,
+        default: null,
       },
       en: {
         type: String,
         trim: true,
+        default: null,
       },
     },
 
@@ -85,17 +88,26 @@ const jobSchema = new mongoose.Schema(
       mr: {
         type: String,
         trim: true,
+        default: null,
       },
       hi: {
         type: String,
         trim: true,
+        default: null,
       },
       en: {
         type: String,
         trim: true,
+        default: null,
       },
     },
 
+    originalLanguage: {
+      type: String,
+      enum: ["mr", "hi", "en"],
+      required: true,
+    },
+    
     experienceRequired: {
       type: Number,
       min: 0,
