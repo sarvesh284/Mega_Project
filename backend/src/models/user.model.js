@@ -4,21 +4,27 @@ const userSchema = new mongoose.Schema(
   {
     phone: {
       type: String,
-      required: true,
+      required: [true, "Phone number is required"],
       unique: true,
-      index: true,
       trim: true,
+    },
+
+    email: {
+      type: String,
+      trim: true,
+      lowercase: true,
+      default: null,
     },
 
     passwordHash: {
       type: String,
-      required: [true,"Password is must"],
+      required: [true, "Password is required"],
     },
 
     role: {
       type: String,
       enum: ["worker", "employer", "admin"],
-      required: true,
+      required: [true, "Role is required"],
     },
 
     preferredLanguage: {
@@ -45,6 +51,8 @@ const userSchema = new mongoose.Schema(
     fraudScore: {
       type: Number,
       default: null,
+      min: 0,
+      max: 100,
     },
 
     isFlagged: {
@@ -54,6 +62,17 @@ const userSchema = new mongoose.Schema(
   },
   {
     timestamps: true,
+  }
+);
+
+// Email is unique only when an email is actually provided
+userSchema.index(
+  { email: 1 },
+  {
+    unique: true,
+    partialFilterExpression: {
+      email: { $type: "string" },
+    },
   }
 );
 

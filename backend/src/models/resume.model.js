@@ -6,7 +6,6 @@ const resumeSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "WorkerProfile",
       required: true,
-      
     },
 
     headline: {
@@ -31,13 +30,6 @@ const resumeSchema = new mongoose.Schema(
       },
     ],
 
-    resumeLanguages: [
-      {
-        type: String,
-        trim: true,
-      },
-    ],
-
     preferredJobTypes: [
       {
         type: String,
@@ -53,6 +45,7 @@ const resumeSchema = new mongoose.Schema(
     sourceVoiceProfileId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "VoiceProfile",
+      default: null,
     },
 
     aiGenerated: {
@@ -63,17 +56,6 @@ const resumeSchema = new mongoose.Schema(
     isPublished: {
       type: Boolean,
       default: false,
-    },
-
-    resumeCreatedAt: {
-      type: Date,
-      default: Date.now,
-      required: true,
-    },
-
-    resumeUpdatedAt: {
-      type: Date,
-      default: Date.now,
     },
 
     template: {
@@ -93,17 +75,14 @@ const resumeSchema = new mongoose.Schema(
       },
     ],
 
-    contact: {
-      type: mongoose.Schema.Types.Mixed,
-    },
-
     generatedAt: {
       type: Date,
+      default: null,
     },
 
     version: {
       type: Number,
-      required: true,
+      default: 1,
       min: 1,
     },
 
@@ -113,11 +92,11 @@ const resumeSchema = new mongoose.Schema(
     },
   },
   {
-    timestamps: false,
+    timestamps: true,
   }
 );
 
-// Unique combination of worker and resume version
+// Prevent duplicate versions for the same worker
 resumeSchema.index(
   { workerId: 1, version: 1 },
   { unique: true }

@@ -113,9 +113,14 @@ const jobSchema = new mongoose.Schema(
       type: Date,
     },
 
-    workingHours: {
+    startTime: {
+      type:String,
+      default: null,
+    },
+
+    endTime: {
       type: String,
-      trim: true,
+      default: null,
     },
 
     shiftType: {
