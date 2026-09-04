@@ -6,6 +6,7 @@ const resumeSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "WorkerProfile",
       required: true,
+      unique: true,
     },
 
     headline: {
@@ -53,9 +54,10 @@ const resumeSchema = new mongoose.Schema(
       default: false,
     },
 
-    isPublished: {
-      type: Boolean,
-      default: false,
+    status: {
+      type: String,
+      enum: ["draft", "published", "archived"],
+      default: "draft",
     },
 
     template: {
@@ -80,27 +82,12 @@ const resumeSchema = new mongoose.Schema(
       default: null,
     },
 
-    version: {
-      type: Number,
-      default: 1,
-      min: 1,
-    },
-
-    isActive: {
-      type: Boolean,
-      default: true,
-    },
   },
   {
     timestamps: true,
   }
 );
 
-// Prevent duplicate versions for the same worker
-resumeSchema.index(
-  { workerId: 1, version: 1 },
-  { unique: true }
-);
 
 const Resume = mongoose.model("Resume", resumeSchema);
 

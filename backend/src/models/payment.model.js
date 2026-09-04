@@ -32,6 +32,7 @@ const paymentSchema = new mongoose.Schema(
     currency: {
       type: String,
       default: "INR",
+      uppercase: true,
       trim: true,
     },
 
@@ -43,36 +44,47 @@ const paymentSchema = new mongoose.Schema(
 
     status: {
       type: String,
-      enum: ["pending", "paid", "failed"],
+      enum: ["pending", "processing", "paid", "failed", "refunded"],
       default: "pending",
       required: true,
     },
 
     paidAt: {
       type: Date,
+      default: null,
     },
 
     note: {
       type: String,
       trim: true,
+      default: null,
+    },
+
+    gateway: {
+      type: String,
+      enum: ["razorpay", "other"],
+      default: null,
     },
 
     gatewayTransactionId: {
       type: String,
       trim: true,
+      default: null,
     },
 
     gatewayOrderId: {
       type: String,
       trim: true,
+      default: null,
     },
 
     gatewayResponse: {
       type: mongoose.Schema.Types.Mixed,
+      default: null,
     },
   },
   {
-    timestamps: false,
+    timestamps: true,
   }
 );
 

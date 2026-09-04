@@ -21,10 +21,20 @@ const userSchema = new mongoose.Schema(
       required: [true, "Password is required"],
     },
 
-    role: {
-      type: String,
-      enum: ["worker", "employer", "admin"],
-      required: [true, "Role is required"],
+    roles: {
+      type: [
+        {
+          type: String,
+          enum: ["worker", "employer", "admin"],
+        },
+      ],
+      required: true,
+      validate: {
+        validator: function (roles) {
+          return roles.length > 0;
+        },
+        message: "At least one role is required",
+      },
     },
 
     preferredLanguage: {
@@ -38,11 +48,6 @@ const userSchema = new mongoose.Schema(
       default: false,
     },
 
-    refreshToken: {
-      type: String,
-      default: null,
-    },
-
     lastLoginAt: {
       type: Date,
       default: null,
@@ -53,6 +58,11 @@ const userSchema = new mongoose.Schema(
       default: null,
       min: 0,
       max: 100,
+    },
+
+    fraudScoreUpdatedAt: {
+      type: Date,
+      default: null,
     },
 
     isFlagged: {
