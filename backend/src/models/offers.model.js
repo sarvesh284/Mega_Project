@@ -43,6 +43,11 @@ const offerSchema = new mongoose.Schema(
   }
 );
 
+offerSchema.index(
+  {jobId: 1, workerId: 1,},
+  { unique: true }
+);
+
 const Offer = mongoose.model("Offer", offerSchema);
 
 export default Offer;

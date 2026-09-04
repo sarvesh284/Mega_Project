@@ -6,6 +6,7 @@ const workHistorySchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "WorkerProfile",
       required: true,
+      index: true,
     },
 
     jobId: {

@@ -6,6 +6,7 @@ const documentSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
       required: true,
+      index: true,
     },
 
     documentType: {
@@ -47,10 +48,6 @@ const documentSchema = new mongoose.Schema(
       type: Date,
     },
 
-    relatedSkillBadgeId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "SkillBadge",
-    },
   },
   {
     timestamps: false,
