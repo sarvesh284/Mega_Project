@@ -55,7 +55,7 @@ workerSkillSchema.index(
 workerSkillSchema.index({
   skillId: 1,
   verificationStatus: 1,
-},{unique:true});
+});
 
 const WorkerSkill = mongoose.model(
   "WorkerSkill",

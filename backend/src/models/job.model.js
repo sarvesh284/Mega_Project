@@ -158,4 +158,5 @@ jobSchema.index({
   createdAt: -1,
 });
 
-module.exports = mongoose.model("Job", jobSchema);
+const Job = mongoose.model("Job", jobSchema);
+export default Job;
