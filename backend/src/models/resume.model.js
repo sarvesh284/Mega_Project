@@ -6,7 +6,7 @@ const resumeSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "WorkerProfile",
       required: true,
-      unique: true,
+      
     },
 
     headline: {
@@ -18,13 +18,6 @@ const resumeSchema = new mongoose.Schema(
       type: String,
       trim: true,
     },
-
-    resumeSkills: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Skill",
-      },
-    ],
 
     experience: [
       {
