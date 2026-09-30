@@ -289,7 +289,7 @@ function Jobs() {
           <div className="jobs-grid">
             {filteredJobs.map((job) => (
               <Link
-                to={`/job/${job.id}`}
+                to={`/jobs/${job.id}`}
                 state={{ job: job.raw }}
                 className="job-card visual-job-card"
                 key={job.id}

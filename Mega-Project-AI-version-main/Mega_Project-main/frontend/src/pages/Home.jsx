@@ -213,7 +213,7 @@ function Home() {
           <div className="jobs-grid">
             {featuredJobs.slice(0, 6).map((job) => (
               <Link
-                to={`/job/${job.id}`}
+                to={`/jobs/${job.id}`}
                 state={{ job: job.raw }}
                 className="job-card visual-job-card"
                 key={job.id}

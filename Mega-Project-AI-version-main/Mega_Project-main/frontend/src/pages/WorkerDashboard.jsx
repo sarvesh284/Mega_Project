@@ -277,7 +277,7 @@ function WorkerDashboard() {
               <div className="recommended-jobs-grid">
                 {recommendedJobs.map((job, index) => (
                   <Link
-                    to={`/job/${job.id}`}
+                    to={`/jobs/${job.id}`}
                     state={{ job: job.raw }}
                     className="recommended-job-card animated-card"
                     key={job.id}

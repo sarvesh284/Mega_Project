@@ -41,6 +41,11 @@ function App() {
         />
 
         <Route
+          path="/job/:id"
+          element={<JobDetails />}
+        />
+
+        <Route
           path="/login"
           element={<Login />}
         />

@@ -286,7 +286,7 @@ function EmployerDashboard() {
                           </Link>
 
                           <Link
-                            to={`/job/${job.id}`}
+                            to={`/jobs/${job.id}`}
                             state={{ job: job.raw }}
                             className="employer-action-secondary"
                             style={{ display: "inline-flex", alignItems: "center", gap: "6px", textDecoration: "none" }}
