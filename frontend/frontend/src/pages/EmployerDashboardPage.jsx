@@ -34,7 +34,7 @@ import { EmptyState } from "../components/common/EmptyState";
 import { JobStatusActions } from "../components/jobs/JobStatusActions";
 
 import "./EmployerDashboardPage.css";
-
+import { ProfileAvatar } from "../components/common/ProfileAvatar";
 const DASHBOARD_TEXT = {
   en: {
     welcome: "Welcome back!",
@@ -223,9 +223,12 @@ export function EmployerDashboardPage() {
       {/* Welcome */}
       <header className="employer-dashboard-header">
         <div className="employer-welcome-content">
-          <div className="employer-welcome-avatar">
-            <Building2 size={36} aria-hidden="true" />
-          </div>
+          <ProfileAvatar
+  role="employer"
+  size={76}
+  className="employer-welcome-avatar"
+/>
+
 
           <div className="employer-welcome-text">
             <p className="employer-welcome-eyebrow">{ui.welcome}</p>

@@ -551,3 +551,92 @@ body {
     scroll-behavior: auto;
   }
 }
+
+/* ===================================
+   LOKROZGAR AI — GLOBAL TYPOGRAPHY
+=================================== */
+
+:root {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.55;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+
+  --font-body: "Nunito Sans", sans-serif;
+  --font-heading: "Nunito Sans", sans-serif;
+  --text-readable: 17px;
+}
+
+body {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.55;
+}
+
+/* All headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+/* Paragraphs and list text */
+p,
+li {
+  font-size: 17px;
+  line-height: 1.65;
+}
+
+/* Inputs and buttons */
+input,
+select,
+textarea,
+button {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* Labels */
+label {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+/* Keep small helper text readable */
+small {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+/* Page headings */
+h1 {
+  font-size: clamp(28px, 3vw, 36px);
+}
+
+h2 {
+  font-size: clamp(23px, 2.3vw, 29px);
+}
+
+h3 {
+  font-size: 20px;
+}
+
+/* Keyboard accessibility */
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid #4779e6;
+  outline-offset: 2px;
+}

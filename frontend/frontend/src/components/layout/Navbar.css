@@ -486,3 +486,18 @@ body {
     font-size: 11px;
   }
 }
+/* Profile pictures in navbar and sidebar */
+
+.top-navbar .top-nav-link img,
+.sidebar .sidebar-user-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.sidebar .sidebar-user-avatar {
+  padding: 0;
+  overflow: hidden;
+  flex-shrink: 0;
+}

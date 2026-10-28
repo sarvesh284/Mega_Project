@@ -32,7 +32,6 @@ import { EmptyState } from "../components/common/EmptyState";
 import { StatusPill } from "../components/common/StatusPill";
 import { ProfileAvatar } from "../components/common/ProfileAvatar";
 import "./WorkerDashboardPage.css";
-
 const PROFILE_FIELDS = [
   "fullName",
   "city",
@@ -281,9 +280,12 @@ export function WorkerDashboardPage() {
       {/* Welcome section */}
       <header className="worker-welcome">
         <div className="worker-welcome-content">
-          <div className="worker-welcome-avatar">
-            <UserRound size={38} aria-hidden="true" />
-          </div>
+          <ProfileAvatar
+  role="worker"
+  size={76}
+  className="worker-welcome-avatar"
+/>
+
 
           <div className="worker-welcome-text">
             <p className="worker-welcome-eyebrow">{ui.welcome}</p>
