@@ -1,4 +1,4 @@
-import { Check, Minus } from "lucide-react";
+import { Check, Minus, Info } from "lucide-react";
 import { MATCH_FACTOR_ORDER } from "../../utils/enums";
 import { useLanguage } from "../../hooks/useLanguage";
 import "./MatchFactorsList.css";
@@ -32,7 +32,7 @@ const LABEL_KEYS = {
  * match is bad.
  * @param {{matchFactors: Record<string, number|null>}} props
  */
-export function MatchFactorsList({ matchFactors, explanation }) {
+export function MatchFactorsList({ matchFactors, explanation, showSummary = true }) {
   const { t } = useLanguage();
   if (!matchFactors) return null;
 
@@ -67,8 +67,14 @@ export function MatchFactorsList({ matchFactors, explanation }) {
           );
         })}
       </ul>
-      {explanation?.summary && (
+      {showSummary && explanation?.summary && (
         <p className="match-factors-summary">{explanation.summary}</p>
+      )}
+      {matchFactors.skill === 0 && (
+        <p className="match-skill-zero-note">
+          <Info size={13} aria-hidden="true" />
+          <span>{t("recommendations.skillsPrioritizedNotice")}</span>
+        </p>
       )}
     </div>
   );
