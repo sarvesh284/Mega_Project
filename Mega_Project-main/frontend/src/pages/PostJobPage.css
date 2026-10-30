@@ -1,0 +1,94 @@
+.post-job-page {
+  max-width: 720px;
+  padding: 32px 0 60px;
+}
+
+.post-job-page h1 {
+  font-size: var(--text-2xl);
+  margin-bottom: 20px;
+}
+
+/* --- voice / manual mode chooser ------------------------------------------ */
+
+.post-job-modes {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.post-job-mode {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  padding: 22px;
+  text-align: left;
+  background: var(--color-surface);
+  color: var(--color-ink);
+  border: 1.5px solid var(--interactive-border, #cbdaf0);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  box-shadow: var(--surface-shadow, 0 2px 8px rgba(30, 64, 175, 0.06));
+  transition: all var(--dur-fast) var(--ease);
+  min-height: var(--touch-target-min);
+}
+
+.post-job-mode:hover:not(:disabled),
+.post-job-mode:focus-visible {
+  border-color: #3b82f6;
+  background: #f8fbff;
+  color: var(--color-ink);
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.12);
+  transform: translateY(-2px);
+}
+
+.post-job-mode.selected {
+  border-color: #2563eb;
+  border-width: 2px;
+  background: #eff6ff;
+  color: #1d4ed8;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.16);
+}
+
+.post-job-mode.selected:hover {
+  background: #e0edff;
+  border-color: #1d4ed8;
+  color: #1d4ed8;
+}
+
+.post-job-mode.selected strong {
+  color: #1d4ed8;
+}
+
+.post-job-mode.selected span {
+  color: #2563eb;
+}
+
+.post-job-mode svg {
+  color: var(--color-primary);
+}
+
+.post-job-mode strong {
+  font-size: var(--text-md);
+  color: var(--color-ink);
+}
+
+.post-job-mode span {
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+  line-height: 1.45;
+}
+
+.post-job-voice-language {
+  max-width: 260px;
+  margin-bottom: 16px;
+}
+
+/* One column on a phone: two side-by-side cards leave the descriptions
+   unreadably narrow at 600px and below. */
+@media (max-width: 600px) {
+  .post-job-modes {
+    grid-template-columns: 1fr;
+  }
+}
